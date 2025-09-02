@@ -48,6 +48,12 @@ export default function App() {
         >
           <Text style={[styles.aboutButtonText, { color: colors.text }]}>Go to About</Text>
         </TouchableOpacity>
+        <TouchableOpacity 
+          style={[styles.booklistButton, { backgroundColor: colors.buttonBackground }]} 
+          onPress={() => router.push('/booklist')}
+        >
+          <Text style={[styles.booklistButtonText, { color: colors.text }]}>Go to Booklist</Text>
+        </TouchableOpacity>
 
         <StatusBar style="auto" />
       </View>
@@ -111,13 +117,25 @@ const styles = StyleSheet.create({
   },
   aboutButton: {
     marginTop: 40,
-    backgroundColor: '#ffffffff',
+    backgroundColor: '#e44c4cff',
     paddingVertical: 10,
     paddingHorizontal: 30,
     borderRadius: 10,
   },
   aboutButtonText: {
     color: '#000',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  booklistButton: {
+    marginTop: 16,
+    backgroundColor: '#f04343ff',
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderRadius: 10,
+  },
+  booklistButtonText: {
+    color: '#ffffffff',
     fontSize: 18,
     fontWeight: 'bold',
   },

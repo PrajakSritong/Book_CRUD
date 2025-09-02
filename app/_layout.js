@@ -2,6 +2,7 @@ import { Stack } from "expo-router";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import ThemeToggle from "./component/ThemeToggle";
 import { StatusBar } from "expo-status-bar";
+import { BookProvider } from "./BookContext"; // เพิ่มบรรทัดนี้
 
 function StackLayout() {
   const { isDarkMode, toggleTheme, colors } = useTheme();
@@ -42,7 +43,9 @@ function StackLayout() {
 export default function Layout() {
   return (
     <ThemeProvider>
-      <StackLayout />
+      <BookProvider>
+        <StackLayout />
+      </BookProvider>
     </ThemeProvider>
   );
 }
