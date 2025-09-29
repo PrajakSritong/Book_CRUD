@@ -4,6 +4,7 @@ import { TouchableOpacity, Linking } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { useRouter } from 'expo-router'; // <-- Add this import
 import { useTheme } from "./context/ThemeContext";
+import { BookProvider } from "./context/BookContext";
 
 
 export default function App() {

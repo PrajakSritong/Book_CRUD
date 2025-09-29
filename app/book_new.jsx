@@ -1,7 +1,21 @@
-import React, { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useRouter } from "expo-router";
-import { useBook } from "./BookContext";
+
+const BookContext = createContext();
+
+export function BookProvider({ children }) {
+  const [books, setBooks] = useState([]);
+  return (
+    <BookContext.Provider value={{ books, setBooks }}>
+      {children}
+    </BookContext.Provider>
+  );
+}
+
+export function useBook() {
+  return useContext(BookContext);
+}
 
 export default function BookNew() {
   const [title, setTitle] = useState("");

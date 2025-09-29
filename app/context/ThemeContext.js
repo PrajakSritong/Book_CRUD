@@ -34,3 +34,9 @@ export const ThemeProvider = ({ children }) => {
     <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
   );
 };
+
+const ThemeContextPage = () => {
+  return <div>Theme Context Page</div>;
+};
+
+export default ThemeContextPage;

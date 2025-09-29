@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
-import { useBook } from "./BookContext";
+import { useBook } from "./context/BookContext";
+import BiometricAuth from "./component/BiometricAuth";
 
 export default function BookList() {
   const { books, setBooks } = useBook();
@@ -9,6 +10,7 @@ export default function BookList() {
   const [editTitle, setEditTitle] = useState("");
   const [editAuthor, setEditAuthor] = useState("");
   const [searchText, setSearchText] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // เพิ่ม state สำหรับการยืนยัน
   const router = useRouter();
 
   // เลือกหนังสือเพื่อแก้ไข
@@ -36,6 +38,16 @@ export default function BookList() {
     book.title.toLowerCase().includes(searchText.toLowerCase())
   );
 
+  // ถ้ายังไม่ยืนยันตัวตน ให้แสดง BiometricAuth เท่านั้น
+  if (!isAuthenticated) {
+    return (
+      <View style={styles.container}>
+        <BiometricAuth onSuccess={() => setIsAuthenticated(true)} />
+      </View>
+    );
+  }
+
+  // ถ้ายืนยันตัวตนแล้ว แสดงเนื้อหาปกติ
   return (
     <View style={styles.container}>
       <Text style={styles.header}>📚 Book List</Text>
